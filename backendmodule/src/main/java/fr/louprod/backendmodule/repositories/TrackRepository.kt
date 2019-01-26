@@ -5,10 +5,11 @@ import fr.louprod.backendmodule.network.RetrofitClients
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import retrofit2.Response
 
 object TrackRepository {
 
-    fun getAllTracks(callback: Observer<List<TrackModel>>) {
+    fun getAllTracks(callback: Observer<Response<List<TrackModel>>>) {
         RetrofitClients.lbcStaticClient
             .getAllTracks()
             .observeOn(AndroidSchedulers.mainThread())
