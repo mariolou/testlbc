@@ -7,6 +7,7 @@ buildscript {
     ext.retrofitVersion = '2.5.0'
     ext.rxJavaVersion = '2.2.6'
     ext.rxAndroidVersion = '2.1.0'
+    ext.materialVersion = '1.0.0'
 
     repositories {
         google()

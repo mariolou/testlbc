@@ -7,6 +7,6 @@ import retrofit2.http.GET
 
 interface LbcStaticService {
 
-    @GET("img/shared/technical-test.json")
+    @GET("img/shared/technical-test2.json")
     fun getAllTracks(): Observable<Response<List<TrackModel>>>
 }

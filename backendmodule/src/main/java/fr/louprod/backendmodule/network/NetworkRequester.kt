@@ -1,4 +1,4 @@
-package fr.louprod.backendmodule.utils
+package fr.louprod.backendmodule.network
 
 import io.reactivex.disposables.Disposable
 
