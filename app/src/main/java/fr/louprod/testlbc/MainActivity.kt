@@ -1,12 +1,11 @@
 package fr.louprod.testlbc
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import fr.louprod.backendmodule.models.TrackModel
 import fr.louprod.backendmodule.repositories.TrackRepository
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
+import fr.louprod.backendmodule.utils.CustomObserver
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,20 +15,10 @@ class MainActivity : AppCompatActivity() {
 
         // For testing :
         TrackRepository.getAllTracks(
-            object : Observer<List<TrackModel>> {
-                override fun onComplete() {}
-
-                override fun onSubscribe(d: Disposable) {}
-
-                override fun onNext(t: List<TrackModel>) {
-                    Log.d("response", "${t.size}")
+            object : CustomObserver<List<TrackModel>>(null) {
+                override fun onCustomSuccess(data: List<TrackModel>) {
+                    Log.d("response", "SUCCESS : ${data.size}")
                 }
-
-                override fun onError(e: Throwable) {
-                    Log.d("response", "ERROR")
-                    e.printStackTrace()
-                }
-
             }
         )
     }
