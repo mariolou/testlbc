@@ -1,5 +1,6 @@
-package fr.louprod.backendmodule.utils
+package fr.louprod.backendmodule.network
 
+import android.util.Log
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import retrofit2.Response
@@ -17,12 +18,14 @@ abstract class CustomObserver<T>(val requester: NetworkRequester?) : Observer<Re
                 onCustomSuccess(it)
             }
         } else {
-            // handle error
+            ErrorHandler(requester).handleResponseError(t)
         }
     }
 
     final override fun onError(e: Throwable) {
         requester?.hideLoader()
+        ErrorHandler(requester).handleNoResponse()
+        e.printStackTrace()
     }
 
     override fun onComplete() {}

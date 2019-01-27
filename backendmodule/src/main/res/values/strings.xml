@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BackendModule</string>
+    <string name="error.network">Error %s : %s</string>
+    <string name="error.network.noresponse">Server isn\'t responding :(</string>
 </resources>
