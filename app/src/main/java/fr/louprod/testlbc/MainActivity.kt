@@ -2,12 +2,13 @@ package fr.louprod.testlbc
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import fr.louprod.backendmodule.models.TrackModel
-import fr.louprod.backendmodule.repositories.TrackRepository
+import fr.louprod.backendmodule.models.AlbumModel
 import fr.louprod.backendmodule.network.CustomObserver
-import fr.louprod.backendmodule.network.NetworkRequester
+import fr.louprod.backendmodule.network.DataRequester
+import fr.louprod.backendmodule.repositories.AlbumRepository
 import io.reactivex.disposables.Disposable
 
 class MainActivity : AppCompatActivity() {
@@ -17,15 +18,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // For testing :
-        TrackRepository.getAllTracks(
-            object : CustomObserver<List<TrackModel>>(
-                object : NetworkRequester {
+        AlbumRepository.getAllAlbums(
+            object : CustomObserver<List<AlbumModel>>(
+                object : DataRequester {
                     override fun showLoader() {
-
+                        findViewById<TextView>(R.id.textview).setText("Loading....")
                     }
 
                     override fun hideLoader() {
-
+                        findViewById<TextView>(R.id.textview).setText("Finish")
                     }
 
                     override fun resolveNetworkError(error: String) {
@@ -42,10 +43,12 @@ class MainActivity : AppCompatActivity() {
 
                 }
             ) {
-                override fun onCustomSuccess(data: List<TrackModel>) {
+                override fun onCustomSuccess(data: List<AlbumModel>) {
                     Log.d("response", "SUCCESS : ${data.size}")
+                    findViewById<TextView>(R.id.textview).setText("Nb albums : ${data.size}")
                 }
-            }
+            },
+            true
         )
     }
 }

@@ -1,12 +1,11 @@
 package fr.louprod.backendmodule.network
 
-import android.util.Log
 import fr.louprod.backendmodule.R
 import fr.louprod.backendmodule.moduleConfiguration.BackendModuleConfiguration
 import retrofit2.Response
 
 class ErrorHandler(
-    val requester: NetworkRequester?
+    val requester: DataRequester?
 ) {
     fun handleResponseError(httpResponse: Response<*>) {
         BackendModuleConfiguration.moduleConfiguration?.getApplicationContext()?.getString(
