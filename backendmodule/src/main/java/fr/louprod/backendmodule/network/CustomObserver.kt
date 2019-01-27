@@ -1,11 +1,10 @@
 package fr.louprod.backendmodule.network
 
-import android.util.Log
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import retrofit2.Response
 
-abstract class CustomObserver<T>(val requester: NetworkRequester?) : Observer<Response<T>> {
+abstract class CustomObserver<T>(val requester: DataRequester?) : Observer<Response<T>> {
     override fun onSubscribe(d: Disposable) {
         requester?.handleDisposable(d)
         requester?.showLoader()

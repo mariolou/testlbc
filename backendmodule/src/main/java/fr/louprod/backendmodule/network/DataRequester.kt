@@ -2,7 +2,7 @@ package fr.louprod.backendmodule.network
 
 import io.reactivex.disposables.Disposable
 
-interface NetworkRequester {
+interface DataRequester {
     fun showLoader()
 
     fun hideLoader()
