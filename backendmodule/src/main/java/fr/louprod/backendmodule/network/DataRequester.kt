@@ -7,7 +7,7 @@ interface DataRequester {
 
     fun hideLoader()
 
-    fun resolveNetworkError(error: String)
+    fun resolveError(error: String)
 
     fun handleDisposable(d: Disposable)
 }

@@ -1,4 +1,4 @@
-package fr.louprod.testlbc.baseClasses
+package fr.louprod.testlbc.baseclasses
 
 interface DataRequesterUIResolver {
     fun showLoader()

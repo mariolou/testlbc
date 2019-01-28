@@ -14,6 +14,7 @@ buildscript {
     ext.frescoVersion = '1.11.0'
     ext.lottieVersion = '1.0.2'
     ext.archNavVersion = '1.0.0-alpha11'
+    ext.stethoVersion = '1.5.0'
 
     repositories {
         google()

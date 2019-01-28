@@ -2,4 +2,5 @@
     <string name="app_name">BackendModule</string>
     <string name="error.network">Error %s : %s</string>
     <string name="error.network.noresponse">Server isn\'t responding :(</string>
+    <string name="error.database.empty">The database seems empty :( Please restart the App</string>
 </resources>

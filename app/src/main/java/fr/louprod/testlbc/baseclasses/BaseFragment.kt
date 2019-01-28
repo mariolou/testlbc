@@ -1,9 +1,9 @@
-package fr.louprod.testlbc.baseClasses
+package fr.louprod.testlbc.baseclasses
 
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import fr.louprod.testlbc.customViews.CustomLoader
+import fr.louprod.testlbc.customviews.CustomLoader
 
 open class BaseFragment: Fragment(), DataRequesterUIResolver {
 

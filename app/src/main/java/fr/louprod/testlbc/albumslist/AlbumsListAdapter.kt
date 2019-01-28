@@ -1,4 +1,4 @@
-package fr.louprod.testlbc.albumsList
+package fr.louprod.testlbc.albumslist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import fr.louprod.backendmodule.models.AlbumModel
 import fr.louprod.testlbc.databinding.ViewholderAlbumsListBinding
 
-class AlbumsListAdapter(var albums: List<AlbumModel>?) : RecyclerView.Adapter<AlbumsListViewHolder>() {
+class AlbumsListAdapter(
+    var albums: List<AlbumModel>?,
+    val onItemClickInterface: AlbumsListViewHolderClickInterface
+) : RecyclerView.Adapter<AlbumsListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumsListViewHolder {
         return AlbumsListViewHolder(
             ViewholderAlbumsListBinding.inflate(
@@ -23,7 +26,7 @@ class AlbumsListAdapter(var albums: List<AlbumModel>?) : RecyclerView.Adapter<Al
 
     override fun onBindViewHolder(holder: AlbumsListViewHolder, position: Int) {
         albums?.getOrNull(position)?.let {
-            holder.bind(it)
+            holder.bind(it, onItemClickInterface)
         }
     }
 }

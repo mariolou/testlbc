@@ -1,7 +1,7 @@
 package fr.louprod.backendmodule.database
 
 import androidx.room.Room
-import fr.louprod.backendmodule.moduleConfiguration.BackendModuleConfiguration
+import fr.louprod.backendmodule.moduleconfiguration.BackendModuleConfiguration
 
 object AppDatabaseInstance {
 

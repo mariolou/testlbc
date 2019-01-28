@@ -25,7 +25,7 @@ object AlbumRepository {
         AppDatabaseInstance.database?.albumDao()?.getAll()
             ?.subscribeOn(Schedulers.computation())
             ?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribe(object : CustomSingleObserver<List<AlbumModel>>() {
+            ?.subscribe(object : CustomSingleObserver<List<AlbumModel>>(callback) {
                 override fun onDatabaseEmpty() {
                     requestDataToApi(callback, true)
                 }
@@ -33,13 +33,9 @@ object AlbumRepository {
                 override fun onSuccess(t: List<AlbumModel>) {
                     callback.requester?.hideLoader()
                     callback.onCustomSuccess(t)
-                    if(refreshDataFromApi) {
+                    if (refreshDataFromApi) {
                         requestDataToApi(callback, false)
                     }
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                    callback.requester?.handleDisposable(d)
                 }
             })
     }
@@ -58,13 +54,18 @@ object AlbumRepository {
     private fun onResultsFromApi(
         originalCallback: CustomObserver<List<AlbumModel>>,
         blockingCall: Boolean,
-        data: List<TrackModel>
+        tracks: List<TrackModel>
     ) {
         CoroutineScope(Dispatchers.Default).launch {
-            val albums = getAlbumsFromTracks(data)
+            val albums = getAlbumsFromTracks(tracks)
+
+            AppDatabaseInstance.database?.apply {
+                albumDao().insert(albums)
+                trackDao().insert(tracks)
+            }
 
             launch(Dispatchers.Main) {
-                if(blockingCall) {
+                if (blockingCall) {
                     originalCallback.requester?.hideLoader()
                 }
                 originalCallback.onCustomSuccess(albums)
@@ -81,8 +82,6 @@ object AlbumRepository {
                     it.value.subList(0, firstTracksTitlesSavedWithAlbumNumber).map { it.title },
                     it.value.subList(0, firstTracksImagesSavedWithAlbumNumber).map { it.imageUrlThb }
                 )
-            }.also {
-                AppDatabaseInstance.database?.albumDao()?.insert(it)
             }
     }
 

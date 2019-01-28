@@ -1,12 +1,12 @@
-package fr.louprod.testlbc.albumsList
+package fr.louprod.testlbc.albumslist
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import fr.louprod.backendmodule.models.AlbumModel
 import fr.louprod.backendmodule.network.CustomObserver
 import fr.louprod.backendmodule.repositories.AlbumRepository
-import fr.louprod.testlbc.baseClasses.BaseViewModel
-import fr.louprod.testlbc.baseClasses.DataRequesterUIResolver
+import fr.louprod.testlbc.baseclasses.BaseViewModel
+import fr.louprod.testlbc.baseclasses.DataRequesterUIResolver
 
 class AlbumsListViewModel(
     application: Application,
