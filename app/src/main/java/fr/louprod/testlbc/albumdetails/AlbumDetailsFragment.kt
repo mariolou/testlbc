@@ -28,7 +28,6 @@ class AlbumDetailsFragment: BaseFragment() {
 
         viewModel = getViewModel(AlbumDetailsViewModel::class.java)?.also {
             it.tracksList.observe(this, Observer {
-                Log.d("TEST", "4444 ${it.size}")
                 adapter.tracks = it
                 adapter.notifyDataSetChanged()
             })

@@ -17,7 +17,6 @@ class AlbumDetailsViewModel(
     val tracksList = MutableLiveData<List<TrackModel>>()
 
     fun getAllAlbumTracks(albumId: Int) {
-        Log.d("TEST", "111 $albumId")
         TrackRepository.getAllTracksWithAlbumId(
             albumId,
             object : CustomObserver<List<TrackModel>>(this) {

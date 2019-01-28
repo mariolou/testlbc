@@ -29,7 +29,6 @@ object TrackRepository {
                 }
 
                 override fun onSuccess(t: List<TrackModel>) {
-                    Log.d("TEST", "22222 ${t.size}")
                     callback.requester?.hideLoader()
                     callback.onCustomSuccess(t)
                 }
