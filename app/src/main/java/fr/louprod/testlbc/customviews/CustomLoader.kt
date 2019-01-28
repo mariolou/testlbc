@@ -1,4 +1,4 @@
-package fr.louprod.testlbc.customViews
+package fr.louprod.testlbc.customviews
 
 import android.app.Dialog
 import android.content.Context

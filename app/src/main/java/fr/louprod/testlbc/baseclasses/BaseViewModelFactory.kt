@@ -1,4 +1,4 @@
-package fr.louprod.testlbc.baseClasses
+package fr.louprod.testlbc.baseclasses
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

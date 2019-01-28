@@ -1,7 +1,7 @@
 package fr.louprod.backendmodule.network
 
 import fr.louprod.backendmodule.R
-import fr.louprod.backendmodule.moduleConfiguration.BackendModuleConfiguration
+import fr.louprod.backendmodule.moduleconfiguration.BackendModuleConfiguration
 import retrofit2.Response
 
 class ErrorHandler(
@@ -13,7 +13,7 @@ class ErrorHandler(
             httpResponse.raw().code(),
             httpResponse.raw().message()
         )?.let {
-            requester?.resolveNetworkError(it)
+            requester?.resolveError(it)
         }
     }
 
@@ -21,7 +21,7 @@ class ErrorHandler(
         BackendModuleConfiguration.moduleConfiguration?.getApplicationContext()?.getString(
             R.string.error_network_noresponse
         )?.let {
-            requester?.resolveNetworkError(it)
+            requester?.resolveError(it)
         }
     }
 }

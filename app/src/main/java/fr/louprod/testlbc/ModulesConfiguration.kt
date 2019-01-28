@@ -1,8 +1,8 @@
 package fr.louprod.testlbc
 
 import android.content.Context
-import fr.louprod.backendmodule.moduleConfiguration.BackendModuleConfiguration
-import fr.louprod.backendmodule.moduleConfiguration.BackendModuleConfigurationInterface
+import fr.louprod.backendmodule.moduleconfiguration.BackendModuleConfiguration
+import fr.louprod.backendmodule.moduleconfiguration.BackendModuleConfigurationInterface
 
 object ModulesConfiguration {
     fun initModules(applicationContext: Context) {

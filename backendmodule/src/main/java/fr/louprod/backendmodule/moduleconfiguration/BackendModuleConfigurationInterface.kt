@@ -1,4 +1,4 @@
-package fr.louprod.backendmodule.moduleConfiguration
+package fr.louprod.backendmodule.moduleconfiguration
 
 import android.content.Context
 

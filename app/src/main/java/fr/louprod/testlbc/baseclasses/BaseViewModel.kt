@@ -1,4 +1,4 @@
-package fr.louprod.testlbc.baseClasses
+package fr.louprod.testlbc.baseclasses
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -19,7 +19,7 @@ open class BaseViewModel(
         dataRequesterUIResolver.hideLoader()
     }
 
-    override fun resolveNetworkError(error: String) {
+    override fun resolveError(error: String) {
         dataRequesterUIResolver.resolveNetworkError(error)
     }
 
