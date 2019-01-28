@@ -19,23 +19,11 @@ class MainActivity : AppCompatActivity() {
 
     var binding: ActivityMainBinding? = null
 
-    val fragment: AlbumsListFragment by lazy {
-        AlbumsListFragment()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_main
         )
-
-        if(savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.container, fragment)
-                commit()
-            }
-        }
-
     }
 }
