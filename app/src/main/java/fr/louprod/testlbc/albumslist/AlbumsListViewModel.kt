@@ -15,14 +15,14 @@ class AlbumsListViewModel(
 
     var albumsList = MutableLiveData<List<AlbumModel>>()
 
-    fun getAlbums(refreshDataFromApi: Boolean) {
+    fun getAlbums() {
         AlbumRepository.getAllAlbums(
             object : CustomObserver<List<AlbumModel>>(this) {
                 override fun onCustomSuccess(data: List<AlbumModel>) {
                     albumsList.postValue(data)
                 }
             },
-            refreshDataFromApi
+            albumsList.value == null // we refresh the data ONLY if the VM has been destroyed
         )
     }
 }

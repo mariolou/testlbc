@@ -32,14 +32,9 @@ class AlbumsListFragment : BaseFragment(), AlbumsListViewHolderClickInterface {
             this.adapter = this@AlbumsListFragment.adapter
         }
 
+        viewModel?.getAlbums()
+
         return binding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // We don't refresh the data from API if we just change the configuration
-        viewModel?.getAlbums(savedInstanceState == null)
     }
 
     override fun onItemClick(albumId: Int) {

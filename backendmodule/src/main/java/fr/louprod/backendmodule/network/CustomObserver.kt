@@ -7,11 +7,9 @@ import retrofit2.Response
 abstract class CustomObserver<T>(val requester: DataRequester?) : Observer<Response<T>> {
     override fun onSubscribe(d: Disposable) {
         requester?.handleDisposable(d)
-        requester?.showLoader()
     }
 
     final override fun onNext(t: Response<T>) {
-        requester?.hideLoader()
         if (t.isSuccessful) {
             t.body()?.let {
                 onCustomSuccess(it)
@@ -22,7 +20,6 @@ abstract class CustomObserver<T>(val requester: DataRequester?) : Observer<Respo
     }
 
     final override fun onError(e: Throwable) {
-        requester?.hideLoader()
         ErrorHandler(requester).handleNoResponse()
         e.printStackTrace()
     }
