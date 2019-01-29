@@ -15,6 +15,16 @@ abstract class CustomSingleObserver<T>(val customObserver: CustomObserver<T>): S
         }
     }
 
+    final override fun onSuccess(t: T) {
+        when {
+            t == null -> onDatabaseEmpty()
+            (t as? List<*>)?.isEmpty() == true -> onDatabaseEmpty()
+            else -> onCustomSuccess(t)
+        }
+    }
+
+    abstract fun onCustomSuccess(t: T)
+
     @CallSuper
     override fun onSubscribe(d: Disposable) {
         customObserver.requester?.handleDisposable(d)

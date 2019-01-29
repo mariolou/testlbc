@@ -7,7 +7,6 @@ import fr.louprod.backendmodule.models.TrackModel
 import fr.louprod.backendmodule.network.CustomObserver
 import fr.louprod.backendmodule.network.RetrofitClients
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +20,6 @@ object AlbumRepository {
         callback: CustomObserver<List<AlbumModel>>,
         refreshDataFromApi: Boolean
     ) {
-        callback.requester?.showLoader()
         AppDatabaseInstance.database?.albumDao()?.getAll()
             ?.subscribeOn(Schedulers.computation())
             ?.observeOn(AndroidSchedulers.mainThread())
@@ -30,8 +28,7 @@ object AlbumRepository {
                     requestDataToApi(callback, true)
                 }
 
-                override fun onSuccess(t: List<AlbumModel>) {
-                    callback.requester?.hideLoader()
+                override fun onCustomSuccess(t: List<AlbumModel>) {
                     callback.onCustomSuccess(t)
                     if (refreshDataFromApi) {
                         requestDataToApi(callback, false)
@@ -44,6 +41,9 @@ object AlbumRepository {
         originalCallback: CustomObserver<List<AlbumModel>>,
         blockingCall: Boolean
     ) {
+        if (blockingCall) {
+            originalCallback.requester?.showLoader()
+        }
         getAllTracksFromApi(object : CustomObserver<List<TrackModel>>(originalCallback.requester) {
             override fun onCustomSuccess(data: List<TrackModel>) {
                 onResultsFromApi(originalCallback, blockingCall, data)

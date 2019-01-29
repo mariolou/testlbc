@@ -1,6 +1,5 @@
 package fr.louprod.backendmodule.repositories
 
-import android.util.Log
 import fr.louprod.backendmodule.R
 import fr.louprod.backendmodule.database.AppDatabaseInstance
 import fr.louprod.backendmodule.database.CustomSingleObserver
@@ -18,6 +17,11 @@ object TrackRepository {
             ?.subscribeOn(Schedulers.computation())
             ?.observeOn(AndroidSchedulers.mainThread())
             ?.subscribe(object : CustomSingleObserver<List<TrackModel>>(callback) {
+                override fun onCustomSuccess(t: List<TrackModel>) {
+                    callback.requester?.hideLoader()
+                    callback.onCustomSuccess(t)
+                }
+
                 override fun onDatabaseEmpty() {
                     BackendModuleConfiguration.moduleConfiguration
                         ?.getApplicationContext()
@@ -26,11 +30,6 @@ object TrackRepository {
                         )?.let {
                             callback.requester?.resolveError(it)
                         }
-                }
-
-                override fun onSuccess(t: List<TrackModel>) {
-                    callback.requester?.hideLoader()
-                    callback.onCustomSuccess(t)
                 }
             })
     }

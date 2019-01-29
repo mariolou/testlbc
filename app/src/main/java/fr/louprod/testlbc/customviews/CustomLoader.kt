@@ -15,10 +15,14 @@ class CustomLoader(context: Context) {
     }
 
     fun show() {
-        dialog?.show()
+        if(dialog?.isShowing == false) {
+            dialog?.show()
+        }
     }
 
     fun hide() {
-        dialog?.hide()
+        if(dialog?.isShowing == true) {
+            dialog?.hide()
+        }
     }
 }
