@@ -1,21 +1,21 @@
 package fr.louprod.testlbc.albumdetails
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import fr.louprod.testlbc.R
 import fr.louprod.testlbc.baseclasses.BaseFragment
 import fr.louprod.testlbc.databinding.FragmentAlbumDetailsBinding
 
 class AlbumDetailsFragment: BaseFragment() {
 
-    var binding: FragmentAlbumDetailsBinding? = null
-    var viewModel: AlbumDetailsViewModel? = null
-    val adapter = AlbumDetailsAdapter(null)
+    private var binding: FragmentAlbumDetailsBinding? = null
+    private var viewModel: AlbumDetailsViewModel? = null
+    private val adapter = AlbumDetailsAdapter(null)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAlbumDetailsBinding.inflate(layoutInflater, container, false)
@@ -38,6 +38,8 @@ class AlbumDetailsFragment: BaseFragment() {
         viewModel?.getAllAlbumTracks(
             args.albumId
         )
+
+        setAppBarTitle(getString(R.string.albumDetailsFragment_title, args.albumId.toString()))
 
         return binding?.root
     }

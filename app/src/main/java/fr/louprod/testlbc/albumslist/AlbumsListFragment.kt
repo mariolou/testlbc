@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import fr.louprod.testlbc.R
 import fr.louprod.testlbc.baseclasses.BaseFragment
 import fr.louprod.testlbc.databinding.FragmentAlbumsListBinding
 
@@ -33,6 +34,8 @@ class AlbumsListFragment : BaseFragment(), AlbumsListViewHolderClickInterface {
         }
 
         viewModel?.getAlbums()
+
+        setAppBarTitle(getString(R.string.albumListFragment_title))
 
         return binding?.root
     }

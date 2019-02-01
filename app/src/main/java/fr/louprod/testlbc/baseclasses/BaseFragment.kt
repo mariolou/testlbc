@@ -3,6 +3,7 @@ package fr.louprod.testlbc.baseclasses
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import fr.louprod.testlbc.MainActivity
 import fr.louprod.testlbc.customviews.CustomLoader
 
 open class BaseFragment: Fragment(), DataRequesterUIResolver {
@@ -21,6 +22,10 @@ open class BaseFragment: Fragment(), DataRequesterUIResolver {
 
     override fun resolveNetworkError(error: String) {
 
+    }
+
+    fun setAppBarTitle(title: String) {
+        (activity as? MainActivity)?.setAppBarTitle(title)
     }
 
     fun <T: BaseViewModel> getViewModel(@NonNull modelClass: Class<T>): T? {
