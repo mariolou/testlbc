@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TestLBC</string>
+    <string name="albumDetailsFragment.title">Album %s</string>
+    <string name="albumListFragment.title">Albums</string>
 </resources>

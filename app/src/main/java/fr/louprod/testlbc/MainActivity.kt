@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             R.layout.activity_main
         )
 
+        setSupportActionBar(binding?.toolbar)
 
         binding?.toolbar?.let {
             NavigationUI.setupWithNavController(
@@ -35,13 +36,13 @@ class MainActivity : AppCompatActivity() {
                 appBarConfig
             )
         }
-
-        setSupportActionBar(binding?.toolbar)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, appBarConfig) || super.onSupportNavigateUp()
+    }
+
+    fun setAppBarTitle(title: String) {
+        supportActionBar?.title = title
     }
 }
