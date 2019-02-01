@@ -11,7 +11,7 @@ import fr.louprod.testlbc.R
 import fr.louprod.testlbc.baseclasses.BaseFragment
 import fr.louprod.testlbc.databinding.FragmentAlbumDetailsBinding
 
-class AlbumDetailsFragment: BaseFragment() {
+class AlbumDetailsFragment : BaseFragment() {
 
     private var binding: FragmentAlbumDetailsBinding? = null
     private var viewModel: AlbumDetailsViewModel? = null

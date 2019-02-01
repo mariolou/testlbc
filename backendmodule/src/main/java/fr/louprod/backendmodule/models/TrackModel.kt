@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 import fr.louprod.backendmodule.database.DbContract
 
 @Entity
-data class TrackModel (
+data class TrackModel(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = DbContract.TrackTable.albumId)
     val albumId: Int,

@@ -19,5 +19,4 @@ object DbContract {
         const val firstTitles = "firstTitles"
         const val firstImagesUrlThb = "firstImagesUrlThb"
     }
-
 }

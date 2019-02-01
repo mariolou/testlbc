@@ -26,7 +26,7 @@ object AlbumRepository {
             ?.observeOn(AndroidSchedulers.mainThread())
             ?.subscribe(object : CustomSingleObserver<List<AlbumModel>>(callback) {
                 override fun onDatabaseEmpty() {
-                    if(refreshDataFromApi) {
+                    if (refreshDataFromApi) {
                         requestDataToApi(callback, true)
                     }
                 }
@@ -76,7 +76,6 @@ object AlbumRepository {
         }
     }
 
-
     private fun getAlbumsFromTracks(data: List<TrackModel>): List<AlbumModel> {
         return data.groupBy { it.albumId }
             .map {
@@ -96,5 +95,4 @@ object AlbumRepository {
             .subscribeOn(Schedulers.io())
             .subscribe(callback)
     }
-
 }
