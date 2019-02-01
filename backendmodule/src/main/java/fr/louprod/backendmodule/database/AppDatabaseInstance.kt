@@ -5,7 +5,7 @@ import fr.louprod.backendmodule.moduleconfiguration.BackendModuleConfiguration
 
 object AppDatabaseInstance {
 
-    private val databaseName = "tlbcDb"
+    private const val databaseName = "tlbcDb"
 
     val database: AppDatabase? by lazy {
         BackendModuleConfiguration.moduleConfiguration?.getApplicationContext()?.let { context ->

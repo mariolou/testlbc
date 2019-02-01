@@ -7,10 +7,10 @@ import io.reactivex.disposables.Disposable
 
 open class BaseViewModel(
     application: Application,
-    val dataRequesterUIResolver: DataRequesterUIResolver
+    private val dataRequesterUIResolver: DataRequesterUIResolver
 ) : AndroidViewModel(application), DataRequester {
 
-    val disposableBag = mutableListOf<Disposable>()
+    private val disposableBag = mutableListOf<Disposable>()
 
     var loaderIsShowing = false
 

@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import fr.louprod.backendmodule.models.AlbumModel
 import fr.louprod.backendmodule.models.TrackModel
 
-@Database(entities = arrayOf(AlbumModel::class, TrackModel::class), version = 1, exportSchema = false)
+@Database(entities = [AlbumModel::class, TrackModel::class], version = 1, exportSchema = false)
 @TypeConverters(DataConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun trackDao(): TrackDao

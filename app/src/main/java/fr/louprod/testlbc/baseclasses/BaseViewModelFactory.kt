@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 class BaseViewModelFactory(
-    val application: Application,
-    val dataRequesterUIResolver: DataRequesterUIResolver
+    private val application: Application,
+    private val dataRequesterUIResolver: DataRequesterUIResolver
 ) :
     ViewModelProvider.NewInstanceFactory() {
 

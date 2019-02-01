@@ -8,7 +8,7 @@ import fr.louprod.testlbc.databinding.ViewholderAlbumsListBinding
 
 class AlbumsListAdapter(
     var albums: List<AlbumModel>?,
-    val onItemClickInterface: AlbumsListViewHolderClickInterface
+    private val onItemClickInterface: AlbumsListViewHolderClickInterface
 ) : RecyclerView.Adapter<AlbumsListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumsListViewHolder {
         return AlbumsListViewHolder(

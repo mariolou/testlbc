@@ -5,7 +5,7 @@ import fr.louprod.backendmodule.moduleconfiguration.BackendModuleConfiguration
 import retrofit2.Response
 
 class ErrorHandler(
-    val requester: DataRequester?
+    private val requester: DataRequester?
 ) {
     fun handleResponseError(httpResponse: Response<*>) {
         BackendModuleConfiguration.moduleConfiguration?.getApplicationContext()?.getString(
