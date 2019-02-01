@@ -7,6 +7,7 @@ import fr.louprod.testlbc.R
 
 class CustomLoader(context: Context) {
     private var dialog: Dialog? = null
+
     init {
         dialog = AlertDialog.Builder(context)
             .setView(R.layout.custom_loader)
@@ -15,14 +16,14 @@ class CustomLoader(context: Context) {
     }
 
     fun show() {
-        if(dialog?.isShowing == false) {
+        if (dialog?.isShowing == false) {
             dialog?.show()
         }
     }
 
     fun hide() {
-        if(dialog?.isShowing == true) {
-            dialog?.hide()
+        if (dialog?.isShowing == true) {
+            dialog?.dismiss()
         }
     }
 }
