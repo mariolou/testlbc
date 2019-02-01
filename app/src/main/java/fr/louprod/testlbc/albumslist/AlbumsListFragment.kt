@@ -42,4 +42,9 @@ class AlbumsListFragment : BaseFragment(), AlbumsListViewHolderClickInterface {
             AlbumsListFragmentDirections.actionAlbumsListFragmentToAlbumDetailsFragment(albumId)
         )
     }
+
+    override fun onDestroyView() {
+        binding?.recyclerView?.adapter = null
+        super.onDestroyView()
+    }
 }
