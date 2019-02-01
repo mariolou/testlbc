@@ -8,7 +8,7 @@ import fr.louprod.backendmodule.models.TrackModel
 
 @Database(entities = arrayOf(AlbumModel::class, TrackModel::class), version = 1, exportSchema = false)
 @TypeConverters(DataConverter::class)
-abstract class AppDatabase: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun trackDao(): TrackDao
     abstract fun albumDao(): AlbumDao
 }

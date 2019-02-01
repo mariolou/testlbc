@@ -10,7 +10,6 @@ object ModulesConfiguration {
             override fun getApplicationContext(): Context {
                 return applicationContext
             }
-
         }
     }
 }

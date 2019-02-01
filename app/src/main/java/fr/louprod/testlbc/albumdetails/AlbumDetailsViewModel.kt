@@ -1,7 +1,6 @@
 package fr.louprod.testlbc.albumdetails
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import fr.louprod.backendmodule.models.TrackModel
 import fr.louprod.backendmodule.network.CustomObserver
@@ -23,7 +22,6 @@ class AlbumDetailsViewModel(
                 override fun onCustomSuccess(data: List<TrackModel>) {
                     tracksList.postValue(data)
                 }
-
             }
         )
     }

@@ -30,7 +30,7 @@ open class BaseViewModel(
     }
 
     override fun handleDisposable(d: Disposable) {
-
+        disposableBag.add(d)
     }
 
     override fun onCleared() {

@@ -8,16 +8,12 @@ object DataConverter {
     @TypeConverter
     @JvmStatic
     fun fromStringList(data: List<String>): String {
-        data?.let {
-            return Gson().toJson(it)
-        }
+        return Gson().toJson(data)
     }
 
     @TypeConverter
     @JvmStatic
     fun toStringList(data: String): List<String> {
-        data?.let {
-            return Gson().fromJson(it, object: TypeToken<List<String>>(){}.type)
-        }
+        return Gson().fromJson(data, object : TypeToken<List<String>>() {}.type)
     }
 }

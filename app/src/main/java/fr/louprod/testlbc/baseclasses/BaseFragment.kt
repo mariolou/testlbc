@@ -19,7 +19,6 @@ open class BaseFragment : Fragment(), DataRequesterUIResolver {
 
     private var viewModel: BaseViewModel? = null
 
-
     fun <T : BaseViewModel> getViewModel(@NonNull modelClass: Class<T>): T? {
         activity?.application?.let { application ->
             return ViewModelProviders.of(
@@ -31,7 +30,6 @@ open class BaseFragment : Fragment(), DataRequesterUIResolver {
             ).get(modelClass).also { viewModel = it }
         }
         return null
-
     }
 
     fun setAppBarTitle(title: String) {
