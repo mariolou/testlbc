@@ -12,13 +12,11 @@ import io.reactivex.schedulers.Schedulers
 object TrackRepository {
 
     fun getAllTracksWithAlbumId(albumId: Int, callback: CustomObserver<List<TrackModel>>) {
-        callback.requester?.showLoader()
         AppDatabaseInstance.database?.trackDao()?.getAllTracksWithAlbumId(albumId)
             ?.subscribeOn(Schedulers.computation())
             ?.observeOn(AndroidSchedulers.mainThread())
             ?.subscribe(object : CustomSingleObserver<List<TrackModel>>(callback) {
                 override fun onCustomSuccess(t: List<TrackModel>) {
-                    callback.requester?.hideLoader()
                     callback.onCustomSuccess(t)
                 }
 
