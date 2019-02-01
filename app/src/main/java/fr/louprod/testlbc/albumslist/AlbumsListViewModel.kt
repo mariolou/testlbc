@@ -15,6 +15,8 @@ class AlbumsListViewModel(
 
     var albumsList = MutableLiveData<List<AlbumModel>>()
 
+    var apiCallAlreadySend = false
+
     fun getAlbums() {
         AlbumRepository.getAllAlbums(
             object : CustomObserver<List<AlbumModel>>(this) {
@@ -22,7 +24,9 @@ class AlbumsListViewModel(
                     albumsList.postValue(data)
                 }
             },
-            albumsList.value == null // we refresh the data ONLY if the VM has been destroyed
+            (!apiCallAlreadySend).also {
+                if (it) apiCallAlreadySend = true
+            } // we refresh the data ONLY the first time
         )
     }
 }

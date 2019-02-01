@@ -11,10 +11,11 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 
 object AlbumRepository {
-    private val firstTracksTitlesSavedWithAlbumNumber = 4
-    private val firstTracksImagesSavedWithAlbumNumber = 4
+    private val firstTracksTitlesSavedWithAlbumNumber = 1
+    private val firstTracksImagesSavedWithAlbumNumber = 1
 
     fun getAllAlbums(
         callback: CustomObserver<List<AlbumModel>>,
@@ -25,7 +26,9 @@ object AlbumRepository {
             ?.observeOn(AndroidSchedulers.mainThread())
             ?.subscribe(object : CustomSingleObserver<List<AlbumModel>>(callback) {
                 override fun onDatabaseEmpty() {
-                    requestDataToApi(callback, true)
+                    if(refreshDataFromApi) {
+                        requestDataToApi(callback, true)
+                    }
                 }
 
                 override fun onCustomSuccess(t: List<AlbumModel>) {
@@ -88,6 +91,7 @@ object AlbumRepository {
     private fun getAllTracksFromApi(callback: CustomObserver<List<TrackModel>>) {
         RetrofitClients.lbcStaticClient
             .getAllTracks()
+            .timeout(5, TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe(callback)

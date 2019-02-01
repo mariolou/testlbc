@@ -9,17 +9,23 @@ open class BaseViewModel(
     application: Application,
     val dataRequesterUIResolver: DataRequesterUIResolver
 ) : AndroidViewModel(application), DataRequester {
+
     val disposableBag = mutableListOf<Disposable>()
+
+    var loaderIsShowing = false
 
     override fun showLoader() {
         dataRequesterUIResolver.showLoader()
+        loaderIsShowing = true
     }
 
     override fun hideLoader() {
         dataRequesterUIResolver.hideLoader()
+        loaderIsShowing = false
     }
 
     override fun resolveError(error: String) {
+        hideLoader()
         dataRequesterUIResolver.resolveNetworkError(error)
     }
 

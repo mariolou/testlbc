@@ -15,15 +15,17 @@ class AlbumsListFragment : BaseFragment(), AlbumsListViewHolderClickInterface {
 
     var binding: FragmentAlbumsListBinding? = null
     var viewModel: AlbumsListViewModel? = null
-    var adapter = AlbumsListAdapter(null, this)
+    var adapter: AlbumsListAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAlbumsListBinding.inflate(inflater, container, false)
 
+        adapter = AlbumsListAdapter(null, this)
+
         viewModel = getViewModel(AlbumsListViewModel::class.java).also {
             it?.albumsList?.observe(this, Observer {
-                adapter.albums = it
-                adapter.notifyDataSetChanged()
+                adapter?.albums = it
+                adapter?.notifyDataSetChanged()
             })
         }
 
