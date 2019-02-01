@@ -1,7 +1,6 @@
 package fr.louprod.testlbc
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
@@ -38,10 +37,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         setSupportActionBar(binding?.toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        Log.d("click", "11111")
         return NavigationUI.navigateUp(navController, appBarConfig) || super.onSupportNavigateUp()
     }
 }
