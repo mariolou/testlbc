@@ -26,8 +26,8 @@ class AlbumDetailsFragment : BaseFragment() {
             setHasFixedSize(true)
         }
 
-        viewModel = getViewModel(AlbumDetailsViewModel::class.java)?.also {
-            it.tracksList.observe(this, Observer {
+        viewModel = getViewModel(AlbumDetailsViewModel::class.java)?.also { viewModel ->
+            viewModel.tracksList.observe(this, Observer {
                 adapter.tracks = it
                 adapter.notifyDataSetChanged()
             })

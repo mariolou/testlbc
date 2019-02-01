@@ -7,7 +7,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClients {
-    private val lbcStaticUrl = "https://static.leboncoin.fr/"
+    private const val lbcStaticUrl = "https://static.leboncoin.fr/"
 
     val lbcStaticClient: LbcStaticService by lazy {
         buildApiClient(lbcStaticUrl).create(LbcStaticService::class.java)

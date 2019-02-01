@@ -14,8 +14,8 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 object AlbumRepository {
-    private val firstTracksTitlesSavedWithAlbumNumber = 1
-    private val firstTracksImagesSavedWithAlbumNumber = 1
+    private const val firstTracksTitlesSavedWithAlbumNumber = 1
+    private const val firstTracksImagesSavedWithAlbumNumber = 1
 
     fun getAllAlbums(
         callback: CustomObserver<List<AlbumModel>>,
@@ -81,8 +81,8 @@ object AlbumRepository {
             .map {
                 AlbumModel(
                     it.key,
-                    it.value.subList(0, firstTracksTitlesSavedWithAlbumNumber).map { it.title },
-                    it.value.subList(0, firstTracksImagesSavedWithAlbumNumber).map { it.imageUrlThb }
+                    it.value.subList(0, firstTracksTitlesSavedWithAlbumNumber).map { track -> track.title },
+                    it.value.subList(0, firstTracksImagesSavedWithAlbumNumber).map { track -> track.imageUrlThb }
                 )
             }
     }

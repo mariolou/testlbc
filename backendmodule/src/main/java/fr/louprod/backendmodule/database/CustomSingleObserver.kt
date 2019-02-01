@@ -6,7 +6,7 @@ import fr.louprod.backendmodule.network.CustomObserver
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
 
-abstract class CustomSingleObserver<T>(val customObserver: CustomObserver<T>) : SingleObserver<T> {
+abstract class CustomSingleObserver<T>(private val customObserver: CustomObserver<T>) : SingleObserver<T> {
     final override fun onError(e: Throwable) {
         if (e is EmptyResultSetException) {
             onDatabaseEmpty()
